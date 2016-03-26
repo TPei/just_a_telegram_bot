@@ -14,13 +14,6 @@ Telegram::Bot::Client.run(token) do |bot|
       responses = []
       chat_id = message.chat.id
 
-      case message.text
-      when '/start'
-        bot.api.send_message(chat_id: message.chat.id, text: "tweap bot meldet sich zum Dienst!")
-      when '/help'
-        bot.api.send_message(chat_id: message.chat.id, text: "/swag is all I know xD")
-      end
-
       if message.text.start_with? '/'
         responses.push CommandWatcherBot.new(text: message.text).check_all
       end

@@ -6,9 +6,12 @@ class CommandWatcherBot
   def check_all
     args = @text.split(' ')
     case args.first
+    when '/start'
+      'tweap bot meldet sich zum Dienst!'
+    when '/help'
+      '/swag is all I know xD'
     when '/swag'
-      return 'yolo swag'
+      'yolo swag'
     end
-    nil
   end
 end
