@@ -1,16 +1,14 @@
 class CommandWatcherBot
-  def initialize(bot: bot, sender: sender, text: text, chat_id: chat_id)
-    @bot = bot
+  def initialize(text: text)
     @text = text
-    @chat_id = chat_id
-    @sender = sender
   end
 
   def check_all
     args = @text.split(' ')
     case args.first
     when '/swag'
-      @bot.api.send_message(chat_id: @chat_id, text: 'Yolo Swag')
+      return 'yolo swag'
     end
+    nil
   end
 end

@@ -2,10 +2,8 @@ class QualityAssuranceBot
   FORBIDDEN_WORDS = ['penner', 'fotze', 'huso', 'spast', 'penis', 'homo', 'kanacke', 'mongo', 'php']
   NICE_WORDS = ['domain driven design', 'milena', 'cqrs', 'algorithmus']
 
-  def initialize(bot: bot, sender: sender, text: text, chat_id: chat_id)
-    @bot = bot
+  def initialize(sender: sender, text: text)
     @text = text
-    @chat_id = chat_id
     @sender_name = "#{sender.first_name}"
   end
 
@@ -18,20 +16,18 @@ class QualityAssuranceBot
   def watch_swear_words
     FORBIDDEN_WORDS.each do |word|
       if @text.downcase.include? word
-        @bot.api.send_message(chat_id: @chat_id, text: "Hey #{@sender_name}, sag nicht sowas ungehöriges")
-        return true
+        return "Hey #{@sender_name}, sag nicht sowas ungehöriges"
       end
     end
-    false
+    nil
   end
 
   def watch_eloquency
     NICE_WORDS.each do |word|
       if @text.downcase.include? word
-        @bot.api.send_message(chat_id: @chat_id, text: "Hey #{@sender_name}, solch schöne Worte")
-        return true
+        return "Hey #{@sender_name}, solch schöne Worte"
       end
     end
-    false
+    nil
   end
 end
