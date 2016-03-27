@@ -1,7 +1,8 @@
 class CommenterBot
   COMMENTS = {
-    'how about no' => 'http://thomaspeikert.de/hanb',
-    'you got me' => 'walter white link'
+    'how about no' => 'http://i.imgur.com/zxl58Pv.jpg?1',
+    'you got me' => 'http://i.imgur.com/jvsIqgz.gifv',
+    'very wow' => 'https://imgflip.com/s/meme/Doge.jpg'
   }.freeze
 
   def initialize(text: text)

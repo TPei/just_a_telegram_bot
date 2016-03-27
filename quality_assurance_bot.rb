@@ -1,6 +1,6 @@
 class QualityAssuranceBot
-  FORBIDDEN_WORDS = ['penner', 'fotze', 'huso', 'spast', 'penis', 'homo', 'kanacke', 'mongo', 'php']
-  NICE_WORDS = ['domain driven design', 'milena', 'cqrs', 'algorithmus']
+  FORBIDDEN_WORDS = ['*', '**', '***'].freeze
+  NICE_WORDS = ['Componentization via Services', 'Evolutionary Design'].freeze
 
   def initialize(sender: sender, text: text)
     @text = text
