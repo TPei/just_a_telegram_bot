@@ -4,10 +4,12 @@ Dotenv.load
 
 class WeatherBot
   BASE_URL = 'api.openweathermap.org/data/2.5/weather'.freeze
+  DEFAULT_CITY = 'Berlin'
+  DEFAULT_COUNTRY_CODE = 'de'
 
   def initialize(args)
-    @city = args[0] || 'Berlin'
-    @country = args[1] || 'de'
+    @city = args[0] || DEFAULT_CITY
+    @country = args[1] || DEFAULT_COUNTRY_CODE
     @api_key = ENV['OWM_KEY']
   end
 
