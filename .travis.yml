@@ -1,3 +1,3 @@
 install:
   - bundle install --path vendor/bundle
-script: true
+script: bundle exec rspec
