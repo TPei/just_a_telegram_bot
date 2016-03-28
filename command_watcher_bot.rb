@@ -11,7 +11,7 @@ class CommandWatcherBot
     when '/start'
       'tweap bot meldet sich zum Dienst!'
     when '/help'
-      '/swag is all I know xD'
+      'I know /swag and /weather city(default=Berlin) country_code(default=de)'
     when '/swag'
       'yolo swag'
     when '/weather'
