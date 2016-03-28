@@ -2,9 +2,9 @@ class QualityAssuranceBot
   FORBIDDEN_WORDS = ['*', '**', '***'].freeze
   NICE_WORDS = ['Componentization via Services', 'Evolutionary Design'].freeze
 
-  def initialize(sender: sender, text: text)
+  def initialize(sender:, text:)
     @text = text
-    @sender_name = "#{sender.first_name}"
+    @sender_name = sender.first_name.to_s
   end
 
   def check_all

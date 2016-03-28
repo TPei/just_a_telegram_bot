@@ -19,7 +19,8 @@ Telegram::Bot::Client.run(token) do |bot|
       end
 
       responses.push CommenterBot.new(text: message.text).check_all
-      responses.push QualityAssuranceBot.new(sender: message.from, text: message.text).check_all
+      responses.push QualityAssuranceBot
+        .new(sender: message.from, text: message.text).check_all
 
       mdp = MessageDispatcher.new(bot: bot, chat_id: chat_id)
       mdp.dispatch_batch(responses)

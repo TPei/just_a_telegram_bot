@@ -1,10 +1,11 @@
 require './weather_bot'
 
 class CommandWatcherBot
-  def initialize(text: text)
+  def initialize(text:)
     @text = text
   end
 
+  # rubocop:disable MethodLength
   def check_all
     args = @text.split(' ')
     case args.first
@@ -15,7 +16,8 @@ class CommandWatcherBot
     when '/swag'
       'yolo swag'
     when '/weather'
-      WeatherBot.new(args[1..-1]).get_weather
+      WeatherBot.new(args[1..-1]).weather_description
     end
   end
+  # rubocop:enable MethodLength
 end
