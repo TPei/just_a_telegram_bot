@@ -1,3 +1,3 @@
 install:
   - bundle install --path vendor/bundle
-script: bundle exec rspec
+script: bundle exec rubocop && bundle exec rspec
