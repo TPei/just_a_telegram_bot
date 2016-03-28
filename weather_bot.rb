@@ -2,8 +2,6 @@ require 'rest-client'
 require 'dotenv'
 Dotenv.load
 
-require 'pry'
-
 class WeatherBot
   BASE_URL = 'api.openweathermap.org/data/2.5/weather'.freeze
   DEFAULT_CITY = 'Berlin'
