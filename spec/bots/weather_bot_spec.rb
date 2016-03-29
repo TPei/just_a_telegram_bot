@@ -1,4 +1,4 @@
-require './weather_bot'
+require './bots/weather_bot'
 require 'dotenv'
 Dotenv.load
 

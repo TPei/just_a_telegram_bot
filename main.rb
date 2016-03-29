@@ -1,8 +1,8 @@
 require 'telegram/bot'
 require 'dotenv'
-require './quality_assurance_bot'
-require './command_watcher_bot'
-require './commenter_bot'
+require './bots/quality_assurance_bot'
+require './bots/command_watcher_bot'
+require './bots/commenter_bot'
 require './message_dispatcher'
 Dotenv.load
 

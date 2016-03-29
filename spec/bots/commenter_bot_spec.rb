@@ -1,4 +1,4 @@
-require './commenter_bot'
+require './bots/commenter_bot'
 
 RSpec.describe CommenterBot do
   it 'knows all the things in the comments hash' do

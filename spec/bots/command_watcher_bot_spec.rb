@@ -1,4 +1,4 @@
-require './command_watcher_bot'
+require './bots/command_watcher_bot'
 
 RSpec.describe CommandWatcherBot do
   it 'has a /start command' do

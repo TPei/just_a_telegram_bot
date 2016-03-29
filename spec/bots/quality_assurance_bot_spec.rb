@@ -1,4 +1,4 @@
-require './quality_assurance_bot'
+require './bots/quality_assurance_bot'
 
 RSpec.describe CommenterBot do
   before do
