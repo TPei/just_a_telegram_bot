@@ -8,7 +8,7 @@ RSpec.describe WeatherBot do
     allow(JSON).to receive(:parse)
       .and_return(
         'main' => { 'temp' => 10.1234 },
-        'wind' => { 'speed' => 11 }
+        'weather' => [{ 'main' => 'Sun' }]
       )
 
     @wb = WeatherBot.new(%w(London uk))
@@ -28,6 +28,6 @@ RSpec.describe WeatherBot do
 
   it 'returns the correct string' do
     expect(@wb.weather_description)
-      .to eq 'Im wunderschoenen London sind es aktuell -263.0 Grad'
+      .to eq 'Im wunderschoenen London sind es aktuell -263.0 Grad mit Sun'
   end
 end
