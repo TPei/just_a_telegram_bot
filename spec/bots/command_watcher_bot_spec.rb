@@ -9,7 +9,12 @@ RSpec.describe CommandWatcherBot do
   it 'has a /help command' do
     cwb = CommandWatcherBot.new(text: '/help me up')
     expect(cwb.check_all).to eq(
-      'I know /swag and /weather city(default=Berlin) country_code(default=de)'
+      <<-HEREDOC
+        I know the following:
+        /swag
+        /weather city(default=Berlin) country_code(default=de)
+        /forecast city(default=Berlin) country_code(default=de)
+      HEREDOC
     )
   end
 
