@@ -1,8 +1,8 @@
 require 'telegram/bot'
 require 'dotenv'
-require './quality_assurance_bot'
-require './command_watcher_bot'
-require './commenter_bot'
+require './bots/quality_assurance_bot'
+require './bots/command_watcher_bot'
+require './bots/commenter_bot'
 require './message_dispatcher'
 Dotenv.load
 
@@ -19,7 +19,8 @@ Telegram::Bot::Client.run(token) do |bot|
       end
 
       responses.push CommenterBot.new(text: message.text).check_all
-      responses.push QualityAssuranceBot.new(sender: message.from, text: message.text).check_all
+      responses.push QualityAssuranceBot
+        .new(sender: message.from, text: message.text).check_all
 
       mdp = MessageDispatcher.new(bot: bot, chat_id: chat_id)
       mdp.dispatch_batch(responses)

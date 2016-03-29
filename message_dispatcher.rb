@@ -1,5 +1,5 @@
 class MessageDispatcher
-  def initialize(bot: bot, chat_id: chat_id)
+  def initialize(bot:, chat_id:)
     @bot = bot
     @chat_id = chat_id
   end
