@@ -17,8 +17,8 @@ class WeatherBot
     url = "#{BASE_URL}?q=#{@city},#{@country}&appid=#{@api_key}"
     response = parse(RestClient.get(url))
     celcius = k_to_c(response['main']['temp'])
-    # wind_m_per_s = response['wind']['speed']
-    "Im wunderschoenen #{@city} sind es aktuell #{celcius} Grad"
+    trait = response['weather'][0]['main']
+    "Im wunderschoenen #{@city} sind es aktuell #{celcius} Grad mit #{trait}"
   end
 
   private
