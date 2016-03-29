@@ -17,6 +17,8 @@ class CommandWatcherBot
       'yolo swag'
     when '/weather'
       WeatherBot.new(args[1..-1]).weather_description
+    when '/forecast'
+      WeatherBot.new(args[1..-1]).weather_forecast
     end
   end
   # rubocop:enable MethodLength

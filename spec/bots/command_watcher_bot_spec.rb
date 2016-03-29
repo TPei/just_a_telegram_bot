@@ -23,6 +23,16 @@ RSpec.describe CommandWatcherBot do
     allow(wb).to receive(:weather_description)
     cwb = CommandWatcherBot.new(text: '/weather me up')
     expect(WeatherBot).to receive(:new).with(%w(me up))
+    expect(wb).to receive(:weather_description)
+    cwb.check_all
+  end
+
+  it 'has a /forecast command' do
+    allow(WeatherBot).to receive(:new).and_return wb = double
+    allow(wb).to receive(:weather_forecast)
+    cwb = CommandWatcherBot.new(text: '/forecast me up')
+    expect(WeatherBot).to receive(:new).with(%w(me up))
+    expect(wb).to receive(:weather_forecast)
     cwb.check_all
   end
 end
