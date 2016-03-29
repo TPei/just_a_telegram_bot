@@ -1,6 +1,6 @@
 class QualityAssuranceBot
   FORBIDDEN_WORDS = ['*', '**', '***'].freeze
-  NICE_WORDS = ['Componentization via Services', 'Evolutionary Design'].freeze
+  NICE_WORDS = ['componentization via services', 'evolutionary design'].freeze
 
   def initialize(sender:, text:)
     @text = text
@@ -16,7 +16,7 @@ class QualityAssuranceBot
   def watch_swear_words
     FORBIDDEN_WORDS.each do |word|
       if @text.downcase.include? word
-        return "Hey #{@sender_name}, sag nicht sowas ungehöriges"
+        return "Hey #{@sender_name}, sag nicht so etwas"
       end
     end
     nil
@@ -25,7 +25,7 @@ class QualityAssuranceBot
   def watch_eloquency
     NICE_WORDS.each do |word|
       if @text.downcase.include? word
-        return "Hey #{@sender_name}, solch schöne Worte"
+        return "Hey #{@sender_name}, solch schoene Worte"
       end
     end
     nil
