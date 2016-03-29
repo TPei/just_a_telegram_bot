@@ -5,7 +5,7 @@ RSpec.describe CommenterBot do
     comments = CommenterBot::COMMENTS
 
     comments.each do |k, v|
-      cb = CommenterBot.new(text: k)
+      cb = CommenterBot.new(text: "Something #{k} else")
       expect(cb.check_all).to eq v
     end
   end
