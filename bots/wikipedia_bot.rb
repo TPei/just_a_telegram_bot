@@ -5,14 +5,7 @@ class WikipediaBot
   end
 
   def check
-    url = 'https://en.wikipedia.org/wiki/Special:Random'
-    final_url = ''
-    RestClient.get(:url => url, :verify_ssl => false) do |response, request, result, &block|
-      if [301, 302, 307].include? response.code
-        response.follow_redirection(request, result, &block)
-      end
-      final_url = request.url
-    end
-    final_url
+    url = 'http://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=5&format=json'
+    response = JSON.parse(RestClient::Request.execute(:url => url, :method => :get, :verify_ssl => false))
   end
 end
