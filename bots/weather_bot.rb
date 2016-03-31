@@ -10,6 +10,7 @@ class WeatherBot
   def initialize(args)
     @city = args[0] || DEFAULT_CITY
     @country = args[1] || DEFAULT_COUNTRY_CODE
+    @time = args[2] || 'today'
     @api_key = ENV['OWM_KEY']
   end
 
@@ -24,10 +25,10 @@ class WeatherBot
   def weather_forecast
     url = "#{BASE_URL}forecast?q=#{@city},#{@country}&appid=#{@api_key}"
     response = parse(RestClient.get(url))
-    response = response['list'][1]
+    response = response['list'][time_number]
     celcius = k_to_c(response['main']['temp'])
     trait = response['weather'][0]['main']
-    "Im wunderschoenen #{@city} werden es #{celcius} Grad mit #{trait}"
+    "Im wunderschoenen #{@city} werden es #{@time} #{celcius} Grad mit #{trait}"
   end
 
   private
@@ -38,5 +39,14 @@ class WeatherBot
 
   def k_to_c(k)
     (k - 273.15).round(1)
+  end
+
+  def time_number
+    case @time
+    when 'today'
+      1
+    when 'tomorrow'
+      8
+    end
   end
 end

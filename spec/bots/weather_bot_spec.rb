@@ -55,7 +55,7 @@ RSpec.describe WeatherBot do
 
     it 'returns the correct string' do
       expect(@wb.weather_forecast)
-        .to eq 'Im wunderschoenen London werden es 11.4 Grad mit Clouds'
+        .to eq 'Im wunderschoenen London werden es today 11.4 Grad mit Clouds'
     end
   end
 
