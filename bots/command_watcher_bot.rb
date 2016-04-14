@@ -15,14 +15,14 @@ class CommandWatcherBot
       <<-HEREDOC
         I know the following:
         /swag
-        /weather city(default=Berlin) country_code(default=de)
-        /forecast city(default=Berlin) country_code(default=de)
+        /weather or /w city(default=Berlin) country_code(default=de)
+        /forecast or /fc city(default=Berlin) country_code(default=de) [today|tomorrow]
       HEREDOC
     when '/swag'
       'yolo swag'
-    when '/weather'
+    when '/weather', '/w'
       WeatherBot.new(args[1..-1]).weather_description
-    when '/forecast'
+    when '/forecast', '/fc'
       WeatherBot.new(args[1..-1]).weather_forecast
     end
   end

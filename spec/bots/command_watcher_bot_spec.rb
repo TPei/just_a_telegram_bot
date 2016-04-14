@@ -12,8 +12,8 @@ RSpec.describe CommandWatcherBot do
       <<-HEREDOC
         I know the following:
         /swag
-        /weather city(default=Berlin) country_code(default=de)
-        /forecast city(default=Berlin) country_code(default=de)
+        /weather or /w city(default=Berlin) country_code(default=de)
+        /forecast or /fc city(default=Berlin) country_code(default=de) [today|tomorrow]
       HEREDOC
     )
   end
@@ -23,21 +23,25 @@ RSpec.describe CommandWatcherBot do
     expect(cwb.check_all).to eq 'yolo swag'
   end
 
-  it 'has a /weather command' do
-    allow(WeatherBot).to receive(:new).and_return wb = double
-    allow(wb).to receive(:weather_description)
-    cwb = CommandWatcherBot.new(text: '/weather me up')
-    expect(WeatherBot).to receive(:new).with(%w(me up))
-    expect(wb).to receive(:weather_description)
-    cwb.check_all
+  ['/weather me up', '/w me up'].each do |text|
+    it "has a #{text.split[0]} command" do
+      allow(WeatherBot).to receive(:new).and_return wb = double
+      allow(wb).to receive(:weather_description)
+      cwb = CommandWatcherBot.new(text: text)
+      expect(WeatherBot).to receive(:new).with(%w(me up))
+      expect(wb).to receive(:weather_description)
+      cwb.check_all
+    end
   end
 
-  it 'has a /forecast command' do
-    allow(WeatherBot).to receive(:new).and_return wb = double
-    allow(wb).to receive(:weather_forecast)
-    cwb = CommandWatcherBot.new(text: '/forecast me up')
-    expect(WeatherBot).to receive(:new).with(%w(me up))
-    expect(wb).to receive(:weather_forecast)
-    cwb.check_all
+  ['/forecast me up', '/fc me up'].each do |text|
+    it "has a #{text.split[0]} command" do
+      allow(WeatherBot).to receive(:new).and_return wb = double
+      allow(wb).to receive(:weather_forecast)
+      cwb = CommandWatcherBot.new(text: text)
+      expect(WeatherBot).to receive(:new).with(%w(me up))
+      expect(wb).to receive(:weather_forecast)
+      cwb.check_all
+    end
   end
 end
