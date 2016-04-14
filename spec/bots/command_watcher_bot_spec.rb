@@ -13,7 +13,7 @@ RSpec.describe CommandWatcherBot do
         I know the following:
         /swag
         /weather or /w city(default=Berlin) country_code(default=de)
-        /forecast or /fc city(default=Berlin) country_code(default=de) [today|tomorrow]
+        /forecast or /fc city country_code [today|tomorrow]
       HEREDOC
     )
   end
