@@ -1,4 +1,5 @@
 require './bots/weather_bot'
+require './bots/translation_bot'
 
 class CommandWatcherBot
   def initialize(text:)
@@ -17,6 +18,8 @@ class CommandWatcherBot
       'yolo swag'
     when '/weather'
       WeatherBot.new(args[1..-1]).weather_description
+    when '/translate'
+      TranslationBot.new(args[1..-1].join(' ')).translate
     end
   end
   # rubocop:enable MethodLength
